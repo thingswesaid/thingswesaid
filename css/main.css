@@ -19,6 +19,7 @@ p {
 
 .lombok {
   font-family: 'Lombok';
+  margin: 0;
 }
 
 html, body {
@@ -26,6 +27,10 @@ html, body {
   padding: 0;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+.main {
+  position: relative;
 }
 
 .first-section {
@@ -42,6 +47,8 @@ html, body {
 
 .first-section-deer {
   opacity: 0;
+  position: fixed;
+  z-index: 99;
 }
 
 .deer-profile {
@@ -106,6 +113,27 @@ html, body {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  position: relative;
+}
+
+.evo-side {
+  background-image: url(../images/evo-side.png);
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  margin-right: -50px;
+}
+
+@media only screen and (max-width: 770px) {
+  .evo-side {
+    margin-right: -110px;
+  }
 }
 
 .small-text {
@@ -135,7 +163,7 @@ html, body {
   -moz-animation:    fadein .9s;
   -o-animation:      fadein .9s;
   animation:         fadein .9s;
-  animation-delay: 1s;
+  animation-delay: .5s;
   animation-fill-mode: forwards;
 }
 
