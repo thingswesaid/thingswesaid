@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Lombok';
-  src: url('https://rawcdn.githack.com/thingswesaid/fonts/cb81d3361be710eff55556881dc2e718c74532fa/Lombok.otf');
+  src: url('https://cdn.rawgit.com/thingswesaid/assets/3b993538f8348a293ac7c75ceb3d67e5ba9683c5/fonts/Lombok.otf');
 }
 
 @font-face {
   font-family: 'Raleway';
-  src: url('https://cdn.rawgit.com/thingswesaid/fonts/cb81d3361be710eff55556881dc2e718c74532fa/RalewayThin.ttf');
+  src: url('https://cdn.rawgit.com/thingswesaid/assets/3b993538f8348a293ac7c75ceb3d67e5ba9683c5/fonts/RalewayThin.ttf');
 }
 
 * {
@@ -90,7 +90,7 @@ html, body {
 .arrow-down {
   width: 100%;
   height: 40px;
-  background-image: url(../images/arrow.png);
+  background-image: url(https://cdn.rawgit.com/thingswesaid/assets/8da91fc91eb6621f81365ce95e8229c3d3fe433f/images/arrow.png);
   background-size: contain;
   background-repeat: no-repeat;
   position: fixed;
