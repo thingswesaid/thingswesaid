@@ -36,14 +36,8 @@ body {
   height: 100vh;
 }
 
-.second-section {
-  font-size: 50px;
-  background: #181818;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+.first-section-deer {
+  opacity: 0;
 }
 
 .deer-profile-left {
@@ -78,14 +72,38 @@ body {
   animation:         intro .9s;
 }
 
+.second-section {
+  font-size: 50px;
+  background: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.small-text {
+  font-size: 15px;
+}
+
+/* animations */
+
 .fadein {
   -webkit-animation: fadein .9s;
   -moz-animation:    fadein .9s;
   -o-animation:      fadein .9s;
   animation:         fadein .9s;
+  opacity: 1;
 }
 
-/* animations */
+.fadeout {
+  -webkit-animation: fadeout .35s;
+  -moz-animation:    fadeout .35s;
+  -o-animation:      fadeout .35s;
+  animation:         fadeout .35s;
+  opacity: 0;
+}
 
 @-webkit-keyframes intro {
   0%   {
@@ -144,4 +162,22 @@ body {
 @keyframes fadein {
   0%   { opacity: 0; }
   100% { opacity: 1; }
+}
+
+
+@-webkit-keyframes fadeout {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes fadeout {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-o-keyframes fadeout {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes fadeout {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
 }

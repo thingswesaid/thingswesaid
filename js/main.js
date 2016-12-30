@@ -1,4 +1,4 @@
-function elementInViewport(el) {
+function checkElementInViewport(el) {
   var top = el.offsetTop;
   var left = el.offsetLeft;
   var width = el.offsetWidth;
@@ -19,11 +19,21 @@ function elementInViewport(el) {
 };
 
 var thingswesaidTitle = document.querySelector('.intro-animation');
-  window.addEventListener("scroll", function() {
-    console.log(thingswesaidTitle)
-    console.log(elementInViewport(thingswesaidTitle));
-    if (elementInViewport(thingswesaidTitle)) {
-      var a = document.querySelector('.first-section-deer');
-      console.log(a);
-    }
-  });
+var firstSectionDeer = document.querySelector('.first-section-deer');
+var isElementInViewport = checkElementInViewport(thingswesaidTitle);
+var memoizeElementInViewport = isElementInViewport;
+
+if (!isElementInViewport) {
+  firstSectionDeer.classList.remove('fadein');
+}
+
+window.addEventListener("scroll", function() {
+  var isInViewAfterScrolling = checkElementInViewport(thingswesaidTitle);
+  if (isInViewAfterScrolling !== memoizeElementInViewport) {
+    var addClass = isInViewAfterScrolling ? 'fadein' : 'fadeout';
+    var removeClass = addClass === 'fadein' ? 'fadeout' : 'fadein';
+    firstSectionDeer.classList.remove(removeClass);
+    firstSectionDeer.classList.add(addClass);
+    memoizeElementInViewport = isInViewAfterScrolling;
+  }
+});
