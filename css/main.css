@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Lombok';
+    src: url('https://rawcdn.githack.com/thingswesaid/fonts/cb81d3361be710eff55556881dc2e718c74532fa/Lombok.otf');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('https://cdn.rawgit.com/thingswesaid/fonts/cb81d3361be710eff55556881dc2e718c74532fa/RalewayThin.ttf');
+}
+
+* {
+  color: white;
+}
+
+p {
+  text-align: center;
+  font-family: 'Raleway';
+}
+
+.lombok {
+  font-family: 'Lombok';
+}
+
+body {
+  background: black;
+  font-family: 'haymaker';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.main {
+  font-size: 50px;
+  font-family: 'haymaker';
+}
