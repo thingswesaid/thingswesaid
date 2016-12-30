@@ -20,6 +20,8 @@ function checkElementInViewport(el) {
 
 var thingswesaidTitle = document.querySelector('.intro-animation');
 var firstSectionDeer = document.querySelector('.first-section-deer');
+var arrowDown = document.querySelector('.arrow-down');
+
 var isElementInViewport = checkElementInViewport(thingswesaidTitle);
 var memoizeElementInViewport = isElementInViewport;
 
@@ -28,6 +30,10 @@ if (!isElementInViewport) {
 }
 
 window.addEventListener("scroll", function() {
+  arrowDown.classList.remove('fadein-with-delay');
+  arrowDown.classList.add('fadeout-fast');
+  console.log(arrowDown);
+
   var isInViewAfterScrolling = checkElementInViewport(thingswesaidTitle);
   if (isInViewAfterScrolling !== memoizeElementInViewport) {
     var addClass = isInViewAfterScrolling ? 'fadein' : 'fadeout';
