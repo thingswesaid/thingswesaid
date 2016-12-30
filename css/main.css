@@ -22,8 +22,13 @@ p {
 }
 
 body {
-  background: black;
-  font-family: 'haymaker';
+  margin: 0;
+  padding: 0;
+}
+
+.first-section {
+  font-size: 50px;
+  background: #181818;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +36,87 @@ body {
   height: 100vh;
 }
 
-.main {
+.second-section {
   font-size: 50px;
-  font-family: 'haymaker';
+  background: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.deer-profile-left {
+  width: 300px;
+  position: fixed;
+  top: 12%;
+  left: 0;
+}
+
+.deer-profile-right {
+  width: 300px;
+  position: fixed;
+  top: 12%;
+  right: 0;
+  -moz-transform: scaleX(-1);
+   -o-transform: scaleX(-1);
+   -webkit-transform: scaleX(-1);
+   transform: scaleX(-1);
+   filter: FlipH;
+   -ms-filter: "FlipH";
+}
+
+.first-section p {
+  margin-top: 0;
+  font-size: 50px;
+}
+
+.intro-animation {
+  -webkit-animation: intro .9s;
+  -moz-animation:    intro .9s;
+  -o-animation:      intro .9s;
+  animation:         intro .9s;
+}
+
+/* animations */
+
+@-webkit-keyframes intro {
+  0%   {
+    opacity: 0;
+    margin-top: 20px;
+   }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+   }
+}
+@-moz-keyframes intro {
+  0%   {
+    opacity: 0;
+    margin-top: 20px;
+   }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+   }
+}
+@-o-keyframes intro {
+  0%   {
+    opacity: 0;
+    margin-top: 20px;
+   }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+   }
+}
+@keyframes intro {
+  0%   {
+    opacity: 0;
+    margin-top: 20px;
+   }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+   }
 }
