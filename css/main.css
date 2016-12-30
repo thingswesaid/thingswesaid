@@ -78,6 +78,13 @@ body {
   animation:         intro .9s;
 }
 
+.fadein {
+  -webkit-animation: fadein .9s;
+  -moz-animation:    fadein .9s;
+  -o-animation:      fadein .9s;
+  animation:         fadein .9s;
+}
+
 /* animations */
 
 @-webkit-keyframes intro {
@@ -119,4 +126,22 @@ body {
     opacity: 1;
     margin-top: 0;
    }
+}
+
+
+@-webkit-keyframes fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
