@@ -31,6 +31,7 @@ html, body {
   padding: 0;
   max-width: 100%;
   overflow-x: hidden;
+  background: #505050;
 }
 
 .main {
@@ -200,23 +201,33 @@ html, body {
 
 .bean-specs {
   width: 100%;
+  z-index: 999;
   position: relative;
+  opacity: 0;
 }
 
 .specs {
   position: fixed;
   right: 30px;
-  bottom: 0;
-  z-index: 99;
+  bottom: 100px;
   font-size: 20px;
+  width: 500px;
 }
 
 .specs p {
   text-align: left;
 }
 
-.item {
+.title-item {
+  margin: 20px 0 -15px 0;
+}
 
+.item {
+  margin: 6px 0 0 10px;
+}
+
+.item-indent {
+  margin: 6px 0 0 30px;
 }
 
 .sylo {

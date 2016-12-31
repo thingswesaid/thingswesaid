@@ -46,6 +46,7 @@ var beanTitle = document.querySelector('.bean-title');
 var evoPicOne = document.querySelector('.evo-pic-1');
 var evoPicTwo = document.querySelector('.evo-pic-2');
 var beanComponents = document.querySelector('.bean-components');
+var beanSpecs = document.querySelector('.bean-specs');
 
 var memoMainTitle;
 var memoBean;
@@ -83,6 +84,8 @@ window.addEventListener("scroll", function() {
   if (isBeanTitleOnTop(beanTitle) && isBeanTitleOnTop(beanTitle) !== memoEvoPics) {
     beanTitle.classList.add('sticky-bean');
 
+    beanSpecs.classList.remove('fadeout');
+    beanSpecs.classList.add('fadein');
     // evoPicOne.classList.remove('fadeout');
     // evoPicOne.classList.add('fadein');
     // beanComponents.classList.remove('fadeout');
@@ -92,7 +95,8 @@ window.addEventListener("scroll", function() {
     memoEvoPics = true;
   } else if(memoEvoPics !== undefined && isBeanTitleOnTop(beanTitle) !== memoEvoPics) {
     beanTitle.classList.remove('sticky-bean');
-
+    beanSpecs.classList.remove('fadein');
+    beanSpecs.classList.add('fadeout');
     // evoPicOne.classList.remove('fadein');
     // evoPicOne.classList.add('fadeout');
     // beanComponents.classList.remove('fadein-with-delay');
