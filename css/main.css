@@ -116,9 +116,11 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .evo-side {
@@ -141,6 +143,13 @@ html, body {
   }
 }
 
+.sticky-bean {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 99;
+}
+
 .bean-logo {
   background-image: url(../images/bean.png);
   width: 100%;
@@ -148,12 +157,74 @@ html, body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin-bottom: 10px;
+  margin: 30px 0 10px;
 }
 
 .small-text {
   font-size: 15px !important;
   margin: 0;
+}
+
+.evo-pictures {
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+}
+
+.evo-pic-1 {
+  opacity: 0;
+  width: 400px;
+  height: 100%;
+  padding: 10px;
+}
+
+.evo-pic-2 {
+  opacity: 0;
+  width: 400px;
+  height: 100%;
+  padding-right: 65px;
+}
+
+.bean-components {
+  font-size: 17px;
+  width: 300px;
+  min-width: 300px;
+  line-height: 25px;
+  text-align: justify;
+  opacity: 0;
+}
+
+.bean-specs {
+  width: 100%;
+  position: relative;
+}
+
+.specs {
+  position: fixed;
+  right: 30px;
+  bottom: 0;
+  z-index: 99;
+  font-size: 20px;
+}
+
+.specs p {
+  text-align: left;
+}
+
+.item {
+
+}
+
+.sylo {
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  width: 60%;
+  z-index: 99;
 }
 
 /* animations */
@@ -180,6 +251,15 @@ html, body {
   -o-animation:      fadein .9s;
   animation:         fadein .9s;
   animation-delay: .5s;
+  animation-fill-mode: forwards;
+}
+
+.fadein-with-long-delay {
+  -webkit-animation: fadein .9s;
+  -moz-animation:    fadein .9s;
+  -o-animation:      fadein .9s;
+  animation:         fadein .9s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 
