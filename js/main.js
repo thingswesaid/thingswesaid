@@ -23,10 +23,12 @@ var mainTitle = document.querySelector('.intro-animation');
 var firstSectionDeer = document.querySelector('.first-section-deer');
 var arrowDown = document.querySelector('.arrow-down');
 var evoSide = document.querySelector('.evo-side');
-var voices = document.querySelector('.lombok');
+var bean = document.querySelector('.bean');
 
 var memoMainTitleInViewport;
 var memoEvoSideInViewport = false;
+var startingPoint;
+
 
 window.addEventListener("scroll", function() {
   arrowDown.classList.remove('fadein-with-delay');
@@ -42,7 +44,8 @@ window.addEventListener("scroll", function() {
     memoMainTitleInViewport = mainTitleInViewScrolling;
   }
 
-  if (!mainTitleInViewScrolling !== memoEvoSideInViewport && checkElementInViewport(voices)) {
+  var beanInViewport = checkElementInViewport(bean);
+  if (!mainTitleInViewScrolling !== memoEvoSideInViewport && beanInViewport) {
     evoSide.classList.remove('fadeout');
     evoSide.classList.add('fadein-with-delay');
     memoEvoSideInViewport = !mainTitleInViewScrolling;
@@ -50,5 +53,12 @@ window.addEventListener("scroll", function() {
     evoSide.classList.remove('fadein-with-delay');
     evoSide.classList.add('fadeout');
     memoEvoSideInViewport = !mainTitleInViewScrolling;
+  }
+
+  // check if bean has been passed
+  if (checkElementInViewport(bean) && !checkElementInViewport(bean, 300)) {
+    startingPoint = startingPoint === undefined ? window.pageYOffset : startingPoint;
+    var move = window.pageYOffset - startingPoint;
+    evoSide.style.right = `-${move}px`;
   }
 });
