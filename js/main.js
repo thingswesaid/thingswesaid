@@ -3,14 +3,11 @@ function checkElementInViewport(el, margin = 0) {
   var left = el.offsetLeft;
   var width = el.offsetWidth;
   var height = el.offsetHeight;
-
-
   while(el.offsetParent) {
     el = el.offsetParent;
     top += el.offsetTop;
     left += el.offsetLeft;
   }
-
   return (
     top >= window.pageYOffset + margin &&
     left >= window.pageXOffset &&
@@ -25,10 +22,9 @@ var arrowDown = document.querySelector('.arrow-down');
 var evoSide = document.querySelector('.evo-side');
 var bean = document.querySelector('.bean');
 
-var memoMainTitleInViewport;
-var memoEvoSideInViewport = false;
+var memoMainTitle;
+var memoBean;
 var startingPoint;
-
 
 window.addEventListener("scroll", function() {
   arrowDown.classList.remove('fadein-with-delay');
@@ -36,29 +32,30 @@ window.addEventListener("scroll", function() {
 
   var mainTitleInViewScrolling = checkElementInViewport(mainTitle, 100);
 
-  if (mainTitleInViewScrolling !== memoMainTitleInViewport) {
+  if (mainTitleInViewScrolling !== memoMainTitle) {
     var addClass = mainTitleInViewScrolling ? 'fadein' : 'fadeout';
     var removeClass = addClass === 'fadein' ? 'fadeout' : 'fadein';
     firstSectionDeer.classList.remove(removeClass);
     firstSectionDeer.classList.add(addClass);
-    memoMainTitleInViewport = mainTitleInViewScrolling;
+    memoMainTitle = mainTitleInViewScrolling;
   }
 
   var beanInViewport = checkElementInViewport(bean);
-  if (!mainTitleInViewScrolling !== memoEvoSideInViewport && beanInViewport) {
+  if (beanInViewport && beanInViewport !== memoBean) {
     evoSide.classList.remove('fadeout');
     evoSide.classList.add('fadein-with-delay');
-    memoEvoSideInViewport = !mainTitleInViewScrolling;
-  } else if(mainTitleInViewScrolling && evoSide.classList.contains('fadein-with-delay')) {
+    memoBean = true;
+  } else if(memoBean !== undefined && beanInViewport !== memoBean) {
     evoSide.classList.remove('fadein-with-delay');
     evoSide.classList.add('fadeout');
-    memoEvoSideInViewport = !mainTitleInViewScrolling;
+    memoBean = false;
   }
 
-  // check if bean has been passed
-  if (checkElementInViewport(bean) && !checkElementInViewport(bean, 300)) {
+  if (beanInViewport && !checkElementInViewport(bean, 300)) {
     startingPoint = startingPoint === undefined ? window.pageYOffset : startingPoint;
-    var move = window.pageYOffset - startingPoint;
-    evoSide.style.right = `-${move}px`;
+    var move = 50 - (window.pageYOffset - startingPoint);
+    if (move <= 50) evoSide.style.right = `${move}px`;
+  } else if (beanInViewport) {
+    evoSide.style.right = '50px';
   }
 });
