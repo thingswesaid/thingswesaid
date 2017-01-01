@@ -111,19 +111,6 @@ html, body {
   opacity: 0;
 }
 
-.second-section {
-  font-size: 50px;
-  background: #181818;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
 .evo-side {
   background-image: url(../images/evo-side.png);
   background-position: right;
@@ -238,7 +225,24 @@ html, body {
 }
 
 #first-section { height: 100vh; }
-#second-section { height: 2000px; }
+
+#second-section {
+  font-size: 50px;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 180vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#third-section {
+  position: absolute;
+  bottom:0;
+}
 
 /* animations */
 
@@ -259,20 +263,11 @@ html, body {
 }
 
 .fadein-with-delay {
-  -webkit-animation: fadein .9s;
-  -moz-animation:    fadein .9s;
-  -o-animation:      fadein .9s;
-  animation:         fadein .9s;
-  animation-delay: .5s;
-  animation-fill-mode: forwards;
-}
-
-.fadein-with-long-delay {
-  -webkit-animation: fadein .9s;
-  -moz-animation:    fadein .9s;
-  -o-animation:      fadein .9s;
-  animation:         fadein .9s;
-  animation-delay: 1s;
+  -webkit-animation: fadein .7s;
+  -moz-animation:    fadein .7s;
+  -o-animation:      fadein .7s;
+  animation:         fadein .7s;
+  animation-delay: .3s;
   animation-fill-mode: forwards;
 }
 

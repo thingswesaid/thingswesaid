@@ -1,48 +1,29 @@
-// global variables
-var beanTitlePosition;
+// HTML elements && window
+docWidth = window.innerWidth;
+docHeight = window.innerHeight;
+docHeightHalf = docHeight / 2;
 
+var firstSection = document.querySelector('#first-section');
+var thirdSection = document.querySelector('#third-section');
+var beanTitle = document.querySelector('.bean-title');
+var evoSide = document.querySelector('.evo-side');
+var firstSectionDeer = document.querySelector('.first-section-deer');
+var arrowDown = document.querySelector('.arrow-down');
+var evoPicOne = document.querySelector('.evo-pic-1');
+var evoPicTwo = document.querySelector('.evo-pic-2');
+var beanComponents = document.querySelector('.bean-components');
+var beanSpecs = document.querySelector('.bean-specs');
 
-
-
-
+// memos
+var memoArrow;
+var memoFirstSectionInView = false;
+var beanTitlePositionStick;
+var memoSecondSectionInView = false;
+var startingPoint;
+var memoBeanTitleSticking = false;
+var memoBeanPics = false;
 
 // helper functions
-(function(exports, d) {
-  function domReady(fn, context) {
-
-    function onReady(event) {
-      d.removeEventListener("DOMContentLoaded", onReady);
-      fn.call(context || exports, event);
-    }
-
-    function onReadyIe(event) {
-      if (d.readyState === "complete") {
-        d.detachEvent("onreadystatechange", onReadyIe);
-        fn.call(context || exports, event);
-      }
-    }
-
-    d.addEventListener && d.addEventListener("DOMContentLoaded", onReady) ||
-    d.attachEvent      && d.attachEvent("onreadystatechange", onReadyIe);
-  }
-
-  exports.domReady = domReady;
-})(window, document);
-
-
-
-
-
-// animation functions
-
-
-
-
-
-window.onbeforeunload = function() {
-   window.scrollTo(0,0);
-}
-
 function checkElementInViewport(el, margin = 0) {
   var top = el.offsetTop;
   var left = el.offsetLeft;
@@ -56,110 +37,130 @@ function checkElementInViewport(el, margin = 0) {
   }
 
   return (
-    top >= window.pageYOffset + margin &&
+    top >= window.pageYOffset - margin &&
     left >= window.pageXOffset &&
     (top + height) <= (window.pageYOffset + window.innerHeight) &&
     (left + width) <= (window.pageXOffset + window.innerWidth)
   );
 };
 
-// refactor make class ? <>
-function isBeanTitleOnTop(el) {
+function isBeanTitleOnTop(el, margin = 0) {
   var top = el.offsetTop;
   var y = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-
   while(el.offsetParent) {
     el = el.offsetParent;
     top += el.offsetTop;
   }
 
-  if (beanTitlePosition === undefined && y >= top) {
-    beanTitlePosition = y;
-  }
+  var greater = y + margin >= top;
+  if (greater) return [true, y];
+  return false;
+};
 
-  return y >= beanTitlePosition
-}
+// lifecycle functions
+window.onbeforeunload = function() {
+  window.scrollTo(0,0);
+};
 
-var mainTitle = document.querySelector('.intro-animation');
-var firstSectionDeer = document.querySelector('.first-section-deer');
-var arrowDown = document.querySelector('.arrow-down');
-var evoSide = document.querySelector('.evo-side');
-var bean = document.querySelector('.bean');
-var beanTitle = document.querySelector('.bean-title');
-var evoPicOne = document.querySelector('.evo-pic-1');
-var evoPicTwo = document.querySelector('.evo-pic-2');
-var beanComponents = document.querySelector('.bean-components');
-var beanSpecs = document.querySelector('.bean-specs');
+var toggleArrow = function(present) {
+  var removeClass = present ? 'fadein-with-delay' : 'fadeout-fast';
+  var addClass = present ? 'fadeout-fast' : 'fadein-with-delay';
+  arrowDown.classList.remove(removeClass);
+  arrowDown.classList.add(addClass);
+  memoArrow = !present;
+};
 
-var secondSection = document.querySelector('#second-section');
-var thirdSection = document.querySelector('#third-section');
+var toggleSection = function(el, present, classIn, classOut) {
+  var addClass = present ? classIn : classOut;
+  var removeClass = present ? classOut : classIn;
+  el.classList.remove(removeClass);
+  el.classList.add(addClass);
+};
 
-var memoMainTitle;
-var memoBean;
-var startingPoint;
-var memoEvoPics;
+toggleArrow(memoArrow);
 
-// refactor make all functions <>
-// refactor create anchors <>
-window.addEventListener("scroll", function() {
-  arrowDown.classList.remove('fadein-with-delay');
-  arrowDown.classList.add('fadeout-fast');
-
-  var mainTitleInView = checkElementInViewport(mainTitle, 100);
-
-  if (mainTitleInView !== memoMainTitle) {
-    var addClass = mainTitleInView ? 'fadein' : 'fadeout';
-    var removeClass = addClass === 'fadein' ? 'fadeout' : 'fadein';
-    firstSectionDeer.classList.remove(removeClass);
-    firstSectionDeer.classList.add(addClass);
-    memoMainTitle = mainTitleInView;
-  }
-
-  var beanInViewport = checkElementInViewport(bean);
-  if (beanInViewport && beanInViewport !== memoBean) {
-    evoSide.classList.remove('fadeout');
-    evoSide.classList.add('fadein-with-delay');
-    memoBean = true;
-  } else if(memoBean !== undefined && beanInViewport !== memoBean) {
-    evoSide.classList.remove('fadein-with-delay');
-    evoSide.classList.add('fadeout');
-    memoBean = false;
-  }
-
-  // function structure to repeat <>
-  if (isBeanTitleOnTop(beanTitle) && isBeanTitleOnTop(beanTitle) !== memoEvoPics) {
-    beanTitle.classList.add('sticky-bean');
-
-    // beanSpecs.classList.remove('fadeout');
-    // beanSpecs.classList.add('fadein');
-
-    evoPicOne.classList.remove('fadeout');
-    evoPicOne.classList.add('fadein');
-    beanComponents.classList.remove('fadeout');
-    beanComponents.classList.add('fadein-with-delay');
-    evoPicTwo.classList.remove('fadeout');
-    evoPicTwo.classList.add('fadein-with-long-delay');
-    memoEvoPics = true;
-  } else if(memoEvoPics !== undefined && isBeanTitleOnTop(beanTitle) !== memoEvoPics) {
-    beanTitle.classList.remove('sticky-bean');
-
-    // beanSpecs.classList.remove('fadein');
-    // beanSpecs.classList.add('fadeout');
-
-    evoPicOne.classList.remove('fadein');
-    evoPicOne.classList.add('fadeout');
-    beanComponents.classList.remove('fadein-with-delay');
-    beanComponents.classList.add('fadeout');
-    evoPicTwo.classList.remove('fadein-with-long-delay');
-    evoPicTwo.classList.add('fadeout');
-    memoEvoPics = false;
-  }
-
-  if (beanInViewport && !checkElementInViewport(bean, 300)) {
+slideEvoSide = function() {
+  if (isBeanTitleOnTop(beanTitle, docHeight / 4)[0]) {
     startingPoint = startingPoint === undefined ? window.pageYOffset : startingPoint;
     var move = 50 - (window.pageYOffset - startingPoint);
     if (move <= 50) evoSide.style.right = `${move - 10}px`;
-  } else if (beanInViewport) {
-    evoSide.style.right = '50px';
   }
+};
+
+beanTitle.style.marginTop = `${docHeight * 0.5}px`;
+
+var showBeanPics = function(show) {
+  if (show) {
+    evoPicOne.classList.remove('fadeout');
+    evoPicOne.classList.add('fadein');
+    beanComponents.classList.remove('fadeout');
+    beanComponents.style.animationDelay = '.4s'
+    beanComponents.classList.add('fadein');
+    evoPicTwo.classList.remove('fadeout');
+    evoPicTwo.style.animationDelay = '.8s'
+    evoPicTwo.classList.add('fadein');
+    memoBeanPics = true;
+  } else {
+    evoPicOne.classList.remove('fadein');
+    evoPicOne.classList.add('fadeout');
+    beanComponents.classList.remove('fadein');
+    beanComponents.style.animationDelay = ''
+    beanComponents.classList.add('fadeout');
+    evoPicTwo.classList.remove('fadein');
+    evoPicTwo.style.animationDelay = ''
+    evoPicTwo.classList.add('fadeout');
+    memoBeanPics = false;
+  }
+}
+
+var showBeanSpecs = function(show) {
+  if (show) {
+    beanSpecs.classList.remove('fadeout');
+    beanSpecs.classList.add('fadein');
+    showBeanPics(false);
+  } else if (!show && memoBeanTitleSticking && !memoBeanPics) {
+    beanSpecs.classList.remove('fadein');
+    beanSpecs.classList.add('fadeout');
+    showBeanPics(true);
+  }
+}
+
+var stickBeanTitleCheck = function(timeToStick) {
+  if (!memoBeanTitleSticking && timeToStick[0]) {
+    beanTitle.style.marginTop = '0';
+    beanTitle.classList.add('sticky-bean');
+    beanTitlePositionStick = timeToStick[1]
+    memoBeanTitleSticking = true;
+    showBeanPics(true);
+  } else if(beanTitlePositionStick && beanTitlePositionStick >= document.body.scrollTop) {
+    beanTitle.classList.remove('sticky-bean');
+    beanTitle.style.marginTop = `${docHeight * 0.5}px`;
+    beanTitlePositionStick = undefined;
+    memoBeanTitleSticking = false;
+    showBeanPics(false);
+  }
+};
+
+// scroll events
+window.addEventListener("scroll", function() {
+  if (memoArrow) toggleArrow(arrowDown)
+
+  var firstSectionInView = checkElementInViewport(firstSection, docHeightHalf)
+  if (firstSectionInView !== memoFirstSectionInView) {
+    toggleSection(firstSectionDeer, firstSectionInView, 'fadein', 'fadeout');
+    memoFirstSectionInView = firstSectionInView;
+  }
+
+  var beanTitleInView = checkElementInViewport(beanTitle)
+  if (beanTitleInView !== memoSecondSectionInView) {
+    toggleSection(evoSide, beanTitleInView, 'fadein-with-delay', 'fadeout');
+    memoSecondSectionInView = beanTitleInView;
+  }
+
+  if (beanTitleInView) slideEvoSide();
+  var beanTitleInView = isBeanTitleOnTop(beanTitle);
+  stickBeanTitleCheck(beanTitleInView);
+
+  var thirdSectionInView = checkElementInViewport(thirdSection);
+  showBeanSpecs(thirdSectionInView);
 });
