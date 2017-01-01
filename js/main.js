@@ -1,4 +1,47 @@
+// global variables
 var beanTitlePosition;
+
+
+
+
+
+
+// helper functions
+(function(exports, d) {
+  function domReady(fn, context) {
+
+    function onReady(event) {
+      d.removeEventListener("DOMContentLoaded", onReady);
+      fn.call(context || exports, event);
+    }
+
+    function onReadyIe(event) {
+      if (d.readyState === "complete") {
+        d.detachEvent("onreadystatechange", onReadyIe);
+        fn.call(context || exports, event);
+      }
+    }
+
+    d.addEventListener && d.addEventListener("DOMContentLoaded", onReady) ||
+    d.attachEvent      && d.attachEvent("onreadystatechange", onReadyIe);
+  }
+
+  exports.domReady = domReady;
+})(window, document);
+
+
+
+
+
+// animation functions
+
+
+
+
+
+window.onbeforeunload = function() {
+   window.scrollTo(0,0);
+}
 
 function checkElementInViewport(el, margin = 0) {
   var top = el.offsetTop;
@@ -48,6 +91,9 @@ var evoPicTwo = document.querySelector('.evo-pic-2');
 var beanComponents = document.querySelector('.bean-components');
 var beanSpecs = document.querySelector('.bean-specs');
 
+var secondSection = document.querySelector('#second-section');
+var thirdSection = document.querySelector('#third-section');
+
 var memoMainTitle;
 var memoBean;
 var startingPoint;
@@ -84,25 +130,28 @@ window.addEventListener("scroll", function() {
   if (isBeanTitleOnTop(beanTitle) && isBeanTitleOnTop(beanTitle) !== memoEvoPics) {
     beanTitle.classList.add('sticky-bean');
 
-    beanSpecs.classList.remove('fadeout');
-    beanSpecs.classList.add('fadein');
-    // evoPicOne.classList.remove('fadeout');
-    // evoPicOne.classList.add('fadein');
-    // beanComponents.classList.remove('fadeout');
-    // beanComponents.classList.add('fadein-with-delay');
-    // evoPicTwo.classList.remove('fadeout');
-    // evoPicTwo.classList.add('fadein-with-long-delay');
+    // beanSpecs.classList.remove('fadeout');
+    // beanSpecs.classList.add('fadein');
+
+    evoPicOne.classList.remove('fadeout');
+    evoPicOne.classList.add('fadein');
+    beanComponents.classList.remove('fadeout');
+    beanComponents.classList.add('fadein-with-delay');
+    evoPicTwo.classList.remove('fadeout');
+    evoPicTwo.classList.add('fadein-with-long-delay');
     memoEvoPics = true;
   } else if(memoEvoPics !== undefined && isBeanTitleOnTop(beanTitle) !== memoEvoPics) {
     beanTitle.classList.remove('sticky-bean');
-    beanSpecs.classList.remove('fadein');
-    beanSpecs.classList.add('fadeout');
-    // evoPicOne.classList.remove('fadein');
-    // evoPicOne.classList.add('fadeout');
-    // beanComponents.classList.remove('fadein-with-delay');
-    // beanComponents.classList.add('fadeout');
-    // evoPicTwo.classList.remove('fadein-with-long-delay');
-    // evoPicTwo.classList.add('fadeout');
+
+    // beanSpecs.classList.remove('fadein');
+    // beanSpecs.classList.add('fadeout');
+
+    evoPicOne.classList.remove('fadein');
+    evoPicOne.classList.add('fadeout');
+    beanComponents.classList.remove('fadein-with-delay');
+    beanComponents.classList.add('fadeout');
+    evoPicTwo.classList.remove('fadein-with-long-delay');
+    evoPicTwo.classList.add('fadeout');
     memoEvoPics = false;
   }
 

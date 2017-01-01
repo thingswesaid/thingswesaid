@@ -201,8 +201,8 @@ html, body {
 
 .bean-specs {
   width: 100%;
-  z-index: 999;
-  position: relative;
+  z-index: 99;
+  position: fixed;
   opacity: 0;
 }
 
@@ -235,8 +235,10 @@ html, body {
   bottom: 0;
   left: 20px;
   width: 60%;
-  z-index: 99;
 }
+
+#first-section { height: 100vh; }
+#second-section { height: 2000px; }
 
 /* animations */
 
