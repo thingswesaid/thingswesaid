@@ -12,10 +12,46 @@
   color: white;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: #505050;
+
+  position: relative;
+}
+
 p {
   text-align: center;
   font-family: 'Raleway';
 }
+
+#navigator {
+  position: fixed;
+  top: 38vh;
+  right: 0;
+  height: 100px;
+  width: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  z-index: 999;
+}
+
+#navigator * {
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: white;
+  opacity: .5;
+}
+
+#navigator .active {
+  opacity: 1;
+  box-shadow: 0px 0px 5px #fff;
+}
+
 
 .lombok {
   font-family: 'Lombok';
@@ -24,14 +60,6 @@ p {
 
 .bean {
   margin-bottom: 6px;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
-  overflow-x: hidden;
-  background: #505050;
 }
 
 .main {
@@ -190,7 +218,7 @@ html, body {
   width: 100%;
   z-index: 99;
   position: fixed;
-  opacity: 0;
+  /*opacity: 0;*/
 }
 
 .specs {
@@ -199,6 +227,7 @@ html, body {
   bottom: 100px;
   font-size: 20px;
   width: 500px;
+  opacity: 0;
 }
 
 .specs p {
@@ -222,9 +251,10 @@ html, body {
   bottom: 0;
   left: 20px;
   width: 60%;
+  opacity: 0;
 }
 
-#first-section { height: 100vh; }
+#first-section { height: 95vh; }
 
 #second-section {
   font-size: 50px;
