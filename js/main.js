@@ -7,6 +7,10 @@ var firstSection = document.querySelector('#first-section');
 var specsSection = document.querySelector('#specs-section');
 var emailSection = document.querySelector('#email-section');
 var creditsSection = document.querySelector('#credits-section');
+var beanSection = document.querySelector('#bean');
+var beanPicsSection = document.querySelector('#bean-pics');
+var beanSpecsSection = document.querySelector('#bean-specs');
+var creditsSection = document.querySelector('#credits-section');
 var mainTitle = document.querySelector('.main-title');
 var beanTitle = document.querySelector('.bean-title');
 var evoSide = document.querySelector('.evo-side');
@@ -20,9 +24,6 @@ var sylo = document.querySelector('.sylo');
 var specs = document.querySelector('.specs');
 
 var thingswesaid = document.querySelector('#thingswesaid');
-var beanSection = document.querySelector('#bean');
-var beanPicsSection = document.querySelector('#bean-pics');
-var beanSpecsSection = document.querySelector('#bean-specs');
 
 // memos
 var memoArrow;
@@ -34,6 +35,7 @@ var memoBeanTitleSticking = false;
 var memoBeanPics = false;
 var memoEmailSectionOutView;
 var memoEmailSectionInView;
+var memoCreditsSectionInView;
 
 // helper functions
 function checkElementInViewport(el, marginTop = 0, marginBottom = 0) {
@@ -177,7 +179,6 @@ var showEmailSection = function(show) {
   }
 }
 
-
 // scroll events
 window.addEventListener("scroll", function() {
   if (memoArrow) toggleArrow(arrowDown)
@@ -206,13 +207,15 @@ window.addEventListener("scroll", function() {
   var emailSectionOutView = checkElementInViewport(emailSection, 400, 300);
   if (!memoBeanPics) showBeanSpecs(specsSectionInView && !emailSectionInView);
 
-  if (memoBeanTitleSticking) showBeanPics(!emailSectionInView && !emailSectionOutView && !specsSectionInView && memoBeanTitleSticking)
+  var creditsSectionInView = checkElementInViewport(creditsSection)
+  memoCreditsSectionInView = creditsSectionInView;
+  if (memoBeanTitleSticking) showBeanPics(!emailSectionInView && !emailSectionOutView && !specsSectionInView && memoBeanTitleSticking && !creditsSectionInView)
 
   if (emailSectionOutView !== memoEmailSectionOutView) {
     if (emailSectionOutView) {
       showEmailSection(true);
       beanTitle.classList.add('fadeout');
-    } else {
+    } else if (!memoCreditsSectionInView) {
       beanTitle.classList.remove('fadeout');
       beanTitle.classList.add('fadein');
     }

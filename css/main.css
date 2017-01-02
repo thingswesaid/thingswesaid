@@ -264,19 +264,19 @@ p {
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  height: 300vh;
+  height: 400vh;
   position: relative;
   overflow: hidden;
 }
 
 #specs-section {
   position: absolute;
-  bottom: 850px;
+  bottom: 1600px;
 }
 
 #email-section {
   position: absolute;
-  bottom: 300px;
+  bottom: 1000px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -305,6 +305,13 @@ p {
   text-align: center;
 }
 
+#credits-section {
+  position: absolute;
+  bottom: 350px;
+  font-size: 20px;
+}
+
+
 .link {
   text-decoration: underline;
   color: #3D74DA;
@@ -315,44 +322,43 @@ p {
 }
 
 .checkmark {
-    display:inline-block;
-    width: 22px;
-    height:22px;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
-    position: absolute;
-    top: 37px;
-    right: -20px;
-    /*display: none;*/
+  display:inline-block;
+  width: 22px;
+  height:22px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 37px;
+  right: -20px;
 }
 
 .checkmark_circle {
-    position: absolute;
-    width:22px;
-    height:22px;
-    background-color: lightgreen;
-    border-radius:11px;
-    left:0;
-    top:0;
+  position: absolute;
+  width:22px;
+  height:22px;
+  background-color: lightgreen;
+  border-radius:11px;
+  left:0;
+  top:0;
 }
 
 .checkmark_stem {
-    position: absolute;
-    width:3px;
-    height:9px;
-    background-color:#fff;
-    left:11px;
-    top:6px;
+  position: absolute;
+  width:3px;
+  height:9px;
+  background-color:#fff;
+  left:11px;
+  top:6px;
 }
 
 .checkmark_kick {
-    position: absolute;
-    width:3px;
-    height:3px;
-    background-color:#fff;
-    left:8px;
-    top:12px;
+  position: absolute;
+  width:3px;
+  height:3px;
+  background-color:#fff;
+  left:8px;
+  top:12px;
 }
 
 a:hover {
@@ -383,13 +389,6 @@ input:focus{
   font-weight: lighter;
   text-align: center;
 }
-/*#credits-section {
-position: absolute;
-bottom: 100px;
-font-size: 20px;
-background-color: lightblue;
-padding-top: 100px;
-}*/
 
 /* animations */
 
