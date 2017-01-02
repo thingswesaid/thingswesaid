@@ -67,7 +67,7 @@ p {
   position: relative;
 }
 
-.first-section {
+.main-title {
   font-size: 50px;
   background: #181818;
   display: flex;
@@ -116,7 +116,7 @@ p {
   }
 }
 
-.first-section p {
+.main-title p {
   margin: 0;
   font-size: 50px;
 }
@@ -264,29 +264,132 @@ p {
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  height: 230vh;
+  height: 300vh;
   position: relative;
   overflow: hidden;
 }
 
 #specs-section {
   position: absolute;
-  bottom: 350px;
+  bottom: 850px;
 }
 
 #email-section {
   position: absolute;
-  bottom:200px;
-  /*opacity: 0;*/
-  background-color: orange;
-  width: 10px;
-  height: 10px;
+  bottom: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  z-index: 99;
 }
 
-#credits-section {
-  position: absolute;
-  bottom:50px;
+#email-section p {
+  font-size: 30px;
+  margin: 2px;
 }
+
+#email-section input {
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  margin: 20px;
+  z-index: 99;
+  color: black;
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.link {
+  text-decoration: underline;
+  color: #3D74DA;
+}
+
+.email-input {
+  position: relative;
+}
+
+.checkmark {
+    display:inline-block;
+    width: 22px;
+    height:22px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 37px;
+    right: -20px;
+    /*display: none;*/
+}
+
+.checkmark_circle {
+    position: absolute;
+    width:22px;
+    height:22px;
+    background-color: lightgreen;
+    border-radius:11px;
+    left:0;
+    top:0;
+}
+
+.checkmark_stem {
+    position: absolute;
+    width:3px;
+    height:9px;
+    background-color:#fff;
+    left:11px;
+    top:6px;
+}
+
+.checkmark_kick {
+    position: absolute;
+    width:3px;
+    height:3px;
+    background-color:#fff;
+    left:8px;
+    top:12px;
+}
+
+a:hover {
+  cursor:pointer;
+}
+
+input:focus{
+  outline: none;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+}
+/*#credits-section {
+position: absolute;
+bottom: 100px;
+font-size: 20px;
+background-color: lightblue;
+padding-top: 100px;
+}*/
 
 /* animations */
 

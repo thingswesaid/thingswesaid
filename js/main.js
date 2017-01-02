@@ -7,6 +7,7 @@ var firstSection = document.querySelector('#first-section');
 var specsSection = document.querySelector('#specs-section');
 var emailSection = document.querySelector('#email-section');
 var creditsSection = document.querySelector('#credits-section');
+var mainTitle = document.querySelector('.main-title');
 var beanTitle = document.querySelector('.bean-title');
 var evoSide = document.querySelector('.evo-side');
 var firstSectionDeer = document.querySelector('.first-section-deer');
@@ -25,15 +26,17 @@ var beanSpecsSection = document.querySelector('#bean-specs');
 
 // memos
 var memoArrow;
-var memoFirstSectionInView = false;
+var memoFirstSectionInView;
 var beanTitlePositionStick;
 var memoSecondSectionInView = false;
 var startingPoint;
 var memoBeanTitleSticking = false;
 var memoBeanPics = false;
+var memoEmailSectionOutView;
+var memoEmailSectionInView;
 
 // helper functions
-function checkElementInViewport(el, margin = 0) {
+function checkElementInViewport(el, marginTop = 0, marginBottom = 0) {
   var top = el.offsetTop;
   var left = el.offsetLeft;
   var width = el.offsetWidth;
@@ -46,9 +49,9 @@ function checkElementInViewport(el, margin = 0) {
   }
 
   return (
-    top >= window.pageYOffset - margin &&
+    (top + marginTop) >= window.pageYOffset &&
     left >= window.pageXOffset &&
-    (top + height) <= (window.pageYOffset + window.innerHeight) &&
+    ((top + marginBottom) + height) <= (window.pageYOffset + window.innerHeight) &&
     (left + width) <= (window.pageXOffset + window.innerWidth)
   );
 };
@@ -138,13 +141,12 @@ var showBeanSpecs = function(show) {
     showBeanPics(false);
     switchNavigator(beanPicsSection, false);
     switchNavigator(beanSpecsSection, true);
-  } else if (!show && memoBeanTitleSticking && !memoBeanPics) {
+  } else if (!show && memoBeanTitleSticking) {
     sylo.classList.remove('fadein');
     sylo.classList.add('fadeout');
     specs.classList.remove('fadein');
     specs.style.animationDelay = ''
     specs.classList.add('fadeout');
-    showBeanPics(true);
     switchNavigator(beanPicsSection, true);
     switchNavigator(beanSpecsSection, false);
   }
@@ -170,7 +172,8 @@ var stickBeanTitleCheck = function(timeToStick) {
 
 var showEmailSection = function(show) {
   if (show) {
-    console.log('here');
+    showBeanSpecs(false);
+    showBeanPics(false);
   }
 }
 
@@ -179,7 +182,7 @@ var showEmailSection = function(show) {
 window.addEventListener("scroll", function() {
   if (memoArrow) toggleArrow(arrowDown)
 
-  var firstSectionInView = checkElementInViewport(firstSection, docHeightHalf);
+  var firstSectionInView = checkElementInViewport(mainTitle, docHeightHalf);
   if (firstSectionInView !== memoFirstSectionInView) {
     toggleSection(firstSectionDeer, firstSectionInView, 'fadein', 'fadeout');
     memoFirstSectionInView = firstSectionInView;
@@ -198,11 +201,20 @@ window.addEventListener("scroll", function() {
   stickBeanTitleCheck(beanTitleInView);
 
   var specsSectionInView = checkElementInViewport(specsSection);
-  showBeanSpecs(specsSectionInView);
+  var emailSectionInView = checkElementInViewport(emailSection, 0, -200);
+  memoEmailSectionInView = emailSectionInView;
+  var emailSectionOutView = checkElementInViewport(emailSection, 400, 300);
+  if (!memoBeanPics) showBeanSpecs(specsSectionInView && !emailSectionInView);
 
-  var emailSectionInView = checkElementInViewport(emailSection);
-  if (emailSectionInView) showEmailSection(true);
+  if (memoBeanTitleSticking) showBeanPics(!emailSectionInView && !emailSectionOutView && !specsSectionInView && memoBeanTitleSticking)
 
-  // if (checkElementInViewport(creditsSection)) console.log('credits section');
-
+  if (emailSectionOutView !== memoEmailSectionOutView) {
+    if (emailSectionOutView) {
+      showEmailSection(true);
+      beanTitle.classList.add('fadeout');
+    } else {
+      beanTitle.classList.remove('fadeout');
+      beanTitle.classList.add('fadein');
+    }
+  }
 });
