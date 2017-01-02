@@ -4,7 +4,9 @@ docHeight = window.innerHeight;
 docHeightHalf = docHeight / 2;
 
 var firstSection = document.querySelector('#first-section');
-var thirdSection = document.querySelector('#third-section');
+var specsSection = document.querySelector('#specs-section');
+var emailSection = document.querySelector('#email-section');
+var creditsSection = document.querySelector('#credits-section');
 var beanTitle = document.querySelector('.bean-title');
 var evoSide = document.querySelector('.evo-side');
 var firstSectionDeer = document.querySelector('.first-section-deer');
@@ -166,6 +168,11 @@ var stickBeanTitleCheck = function(timeToStick) {
   }
 };
 
+var showEmailSection = function(show) {
+  if (show) {
+    console.log('here');
+  }
+}
 
 
 // scroll events
@@ -190,6 +197,12 @@ window.addEventListener("scroll", function() {
   var beanTitleInView = isBeanTitleOnTop(beanTitle);
   stickBeanTitleCheck(beanTitleInView);
 
-  var thirdSectionInView = checkElementInViewport(thirdSection);
-  showBeanSpecs(thirdSectionInView);
+  var specsSectionInView = checkElementInViewport(specsSection);
+  showBeanSpecs(specsSectionInView);
+
+  var emailSectionInView = checkElementInViewport(emailSection);
+  if (emailSectionInView) showEmailSection(true);
+
+  // if (checkElementInViewport(creditsSection)) console.log('credits section');
+
 });

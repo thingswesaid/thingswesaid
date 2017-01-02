@@ -256,7 +256,7 @@ p {
 
 #first-section { height: 95vh; }
 
-#second-section {
+#bean-section {
   font-size: 50px;
   background: #181818;
   display: flex;
@@ -264,14 +264,28 @@ p {
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  height: 180vh;
+  height: 230vh;
   position: relative;
   overflow: hidden;
 }
 
-#third-section {
+#specs-section {
   position: absolute;
-  bottom:0;
+  bottom: 350px;
+}
+
+#email-section {
+  position: absolute;
+  bottom:200px;
+  /*opacity: 0;*/
+  background-color: orange;
+  width: 10px;
+  height: 10px;
+}
+
+#credits-section {
+  position: absolute;
+  bottom:50px;
 }
 
 /* animations */
