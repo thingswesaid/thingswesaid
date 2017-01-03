@@ -3,7 +3,7 @@ docWidth = window.innerWidth;
 docHeight = window.innerHeight;
 docHeightHalf = docHeight / 2;
 
-var firstSection = document.querySelector('#first-section');
+// var firstSection = document.querySelector('#tws-section');
 var specsSection = document.querySelector('#specs-section');
 var thingswesaidBullet = document.querySelector('#thingswesaid');
 var beanBullet = document.querySelector('#bean');
@@ -14,10 +14,10 @@ var creditsSection = document.querySelector('#credits-section');
 var beanPicsBullet = document.querySelector('#bean-pics');
 var beanSpecsBullet = document.querySelector('#bean-specs');
 var creditsSection = document.querySelector('#credits-section');
-var mainTitle = document.querySelector('.main-title');
+var mainTitle = document.querySelector('.thingswesaid-title');
 var beanTitle = document.querySelector('.bean-title');
 var evoSide = document.querySelector('.evo-side');
-var firstSectionDeer = document.querySelector('.first-section-deer');
+var twsSectionDeer = document.querySelector('.tws-section-deer');
 var arrowDown = document.querySelector('.arrow-down');
 var evoPicOne = document.querySelector('.evo-pic-1');
 var evoPicTwo = document.querySelector('.evo-pic-2');
@@ -206,7 +206,7 @@ window.addEventListener("scroll", function() {
 
   var firstSectionInView = checkElementInViewport(mainTitle, docHeightHalf);
   if (firstSectionInView !== memoFirstSectionInView) {
-    toggleSection(firstSectionDeer, firstSectionInView, 'fadein', 'fadeout');
+    toggleSection(twsSectionDeer, firstSectionInView, 'fadein', 'fadeout');
     memoFirstSectionInView = firstSectionInView;
     switchNavigator(thingswesaidBullet, memoFirstSectionInView)
   }

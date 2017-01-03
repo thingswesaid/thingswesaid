@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="./css/main.css">
   <title>thingswesaid</title>
 </head>
 <body>
   <div class="main">
+
     <div id="navigator">
       <div id="thingswesaid"></div>
       <div id="bean"></div>
@@ -17,17 +19,19 @@
       <div id="email"></div>
       <div id="credit"></div>
     </div>
-    <div id="first-section">
-      <div class="first-section-deer fadein">
+
+    <div id="tws-title-section">
+      <div class="tws-section-deer fadein">
         <img src="https://cdn.rawgit.com/thingswesaid/assets/8da91fc91eb6621f81365ce95e8229c3d3fe433f/images/deer-profile.png" class="deer-profile deer-left fadein">
         <img src="https://cdn.rawgit.com/thingswesaid/assets/8da91fc91eb6621f81365ce95e8229c3d3fe433f/images/deer-profile.png" class="deer-profile deer-right fadein">
       </div>
       <div class="arrow-down fadein-with-delay"></div>
-      <div class="main-title">
+      <div class="thingswesaid-title">
         <p class="intro-animation">THINGSWESAID</p>
         <p class="intro-animation small-text">lifestyle tech</p>
       </div>
     </div>
+
     <div id="bean-section">
       <div class="evo-side"></div>
       <div class="bean-title">
@@ -35,62 +39,63 @@
         <p class="lombok bean">BEAN</p>
         <p class="small-text">smart bluetooth speaker</p>
       </div>
-
-      <div class="evo-pictures">
-        <img src="./images/evo-pic-1.png" class="evo-pic-1">
-        <p class="bean-components">
-          <strong>BEAN</strong> will allow people to experience omnidirectional music, make phone calls or interact with Siri from anywhere in the house, hands-free.
-          All without sacrificing sound quality and design.
-        </p>
-        <img src="./images/evo-pic-2.png" class="evo-pic evo-pic-2">
+      <div class="evo-pictures-container">
+        <!-- <div class="evo-pictures">
+          <img src="./images/evo-pic-1.png" class="evo-pic-1">
+          <p class="bean-components">
+            <strong>BEAN</strong> will allow people to experience omnidirectional music, make phone calls or interact with Siri from anywhere in the house, hands-free.
+            All without sacrificing sound quality and design.
+          </p>
+          <img src="./images/evo-pic-2.png" class="evo-pic evo-pic-2">
+        </div> -->
       </div>
       <div id="specs-section"></div>
       <div class="bean-specs">
-        <img src="./images/evo-sylo.png" class="sylo">
-        <div class="specs">
-          <p class="title-item">DIMENSIONS<p>
-            <p class="item">•	8 inch diameter - 14 inches high</p>
-            <p class="title-item">DRIVERS<p>
-              <p class="item">•	2 Tweeter drivers - 1.5 inches wide (each)</p>
-              <p class="item">•	1 Midrange driver - 6 inches wide</p>
-              <p class="item">•	1 Subwoofer driver - 4 inches wide</p>
-              <p class="item">•	1 Passive radiator - 6 inches wide</p>
-              <p class="title-item">PCB<p>
-                <p class="item">•	Amp board with:</p>
-                <p class="item-indent">• 1 channel only (mono) - 35W minimum</p>
-                <p class="item-indent">• Bluetooth 4.0 or greater</p>
-                <p class="item-indent">• microphone integrated</p>
-                <p class="item-indent">• optical input</p>
-                <p class="item">•	3 way passive crossover</p>
-                <p class="item">•	LED (to apply behind logo)</p>
-                <p class="item">•	Battery</p>
-                <p class="item">•	Power adapter board</p>
-              </div>
-            </p>
-          </div>
-          <div id="email-section">
-            <div class="email-section-content">
-              <p><strong>BEAN can soon be yours!</strong></p>
-              <p class="small-text">subscribe to be notified of the kicstarter launch</p>
-              <div class="email-input">
-                <input type="email" placeholder="email">
-                <span class="checkmark">
-                  <div class="checkmark_circle"></div>
-                  <div class="checkmark_stem"></div>
-                  <div class="checkmark_kick"></div>
-                </span>
-              </div>
-              <a href="#">
-                <p class="link small-text">download the specs</p>
-              </a>
-            </div>
-          </div>
-          <div id="credits-section">
-            <img src="./images/antlers.png">
-            <p class="small-text">made with love by</p>
-            <p>THINGSWESAID</p>
-          </div>
-        </div>
-        <script type="text/javascript" src="./js/main.js"></script>
-      </body>
-      </html>
+      <img src="./images/evo-sylo.png" class="sylo">
+      <div class="specs">
+      <p class="title-item">DIMENSIONS<p>
+      <p class="item">•	8 inch diameter - 14 inches high</p>
+      <p class="title-item">DRIVERS<p>
+      <p class="item">•	2 Tweeter drivers - 1.5 inches wide (each)</p>
+      <p class="item">•	1 Midrange driver - 6 inches wide</p>
+      <p class="item">•	1 Subwoofer driver - 4 inches wide</p>
+      <p class="item">•	1 Passive radiator - 6 inches wide</p>
+      <p class="title-item">PCB<p>
+      <p class="item">•	Amp board with:</p>
+      <p class="item-indent">• 1 channel only (mono) - 35W minimum</p>
+      <p class="item-indent">• Bluetooth 4.0 or greater</p>
+      <p class="item-indent">• microphone integrated</p>
+      <p class="item-indent">• optical input</p>
+      <p class="item">•	3 way passive crossover</p>
+      <p class="item">•	LED (to apply behind logo)</p>
+      <p class="item">•	Battery</p>
+      <p class="item">•	Power adapter board</p>
+    </div>
+  </p>
+</div>
+<div id="email-section">
+  <div class="email-section-content">
+    <p><strong>BEAN can soon be yours!</strong></p>
+    <p class="small-text">subscribe to be notified of the kicstarter launch</p>
+    <div class="email-input">
+      <input type="email" placeholder="email">
+      <span class="checkmark">
+        <div class="checkmark_circle"></div>
+        <div class="checkmark_stem"></div>
+        <div class="checkmark_kick"></div>
+      </span>
+    </div>
+    <a href="#">
+      <p class="link small-text">download the specs</p>
+    </a>
+  </div>
+</div>
+<div id="credits-section">
+  <img src="./images/antlers.png">
+  <p class="small-text">made with love by</p>
+  <p>THINGSWESAID</p>
+</div>
+</div>
+<script type="text/javascript" src="./js/main.js"></script>
+</body>
+</html>

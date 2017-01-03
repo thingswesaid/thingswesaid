@@ -27,29 +27,21 @@ p {
   font-family: 'Raleway';
 }
 
+.main {
+  position: relative;
+}
+
 #navigator {
   position: fixed;
-  top: 40vh;
-  right: 15px;
+  top: 35vh;
+  right: 0;
   height: 100px;
   width: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  z-index: 999;
+  z-index: 99;
 }
 
 #navigator * {
+  margin: 15px 12px 15px;
   width: 5px;
   height: 5px;
   border-radius: 100%;
@@ -62,6 +54,66 @@ p {
   box-shadow: 0px 0px 5px #fff;
 }
 
+#tws-title-section {
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  background: #181818;
+}
+
+.tws-section-deer {
+  opacity: 0;
+  position: fixed;
+  top: 15vh;
+  z-index: 1;
+  width: 100%;
+  text-align: justify;
+}
+
+.tws-section-deer:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+
+.tws-section-deer img {
+  display: inline-block;
+  width: auto;
+}
+
+.arrow-down {
+  position: fixed;
+  height: 40px;
+  width: 100%;
+  bottom: 12%;
+  background-position: center;
+  background-image: url(https://cdn.rawgit.com/thingswesaid/assets/8da91fc91eb6621f81365ce95e8229c3d3fe433f/images/arrow.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 99;
+}
+
+.thingswesaid-title {
+  font-size: 50px;
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  z-index: 2;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.thingswesaid-title * {
+  margin: 0;
+}
+
+.intro-animation {
+  -webkit-animation: intro .9s;
+  animation:         intro .9s;
+}
 
 .lombok {
   font-family: 'Lombok';
@@ -72,45 +124,6 @@ p {
   margin-bottom: 6px;
 }
 
-.main {
-  position: relative;
-}
-
-.main-title {
-  font-size: 50px;
-  background: #181818;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.first-section-deer {
-  opacity: 0;
-  position: fixed;
-  top: 15vh;
-  z-index: 99;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
-}
-
 .deer-profile {
   height: 50vh;
 }
@@ -119,8 +132,7 @@ p {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   -webkit-filter: FlipH;
-          filter: FlipH;
-  -ms-filter: "FlipH";
+  filter: FlipH;
 }
 
 @media only screen and (max-width: 770px) {
@@ -139,34 +151,17 @@ p {
   font-size: 50px;
 }
 
-.intro-animation {
-  -webkit-animation: intro .9s;
-  animation:         intro .9s;
-}
-
-.arrow-down {
-  width: 100%;
-  height: 40px;
-  background-image: url(https://cdn.rawgit.com/thingswesaid/assets/8da91fc91eb6621f81365ce95e8229c3d3fe433f/images/arrow.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: fixed;
-  bottom: 12%;
-  background-position: center;
-  opacity: 0;
-}
-
 .evo-side {
   background-image: url(../images/evo-side.png);
   background-position: right;
   background-size: contain;
   background-repeat: no-repeat;
   position: fixed;
-  z-index: 99;
+  /*z-index: 99;*/
   top: 0;
+  margin-right: -50px;
   width: 100%;
   height: 100%;
-  margin-right: -50px;
   opacity: 0;
 }
 
@@ -180,7 +175,24 @@ p {
   position: fixed;
   top: 0px;
   width: 100%;
-  z-index: 99;
+  /*z-index: 99;*/
+}
+
+#bean-section {
+  display: table;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  font-size: 50px;
+  text-align: center;
+}
+
+.bean-title {
+  width: 100%;
+  /*display: table-cell;*/
+  display: inline-block;
+  /*vertical-align: middle;*/
+  height: 50vh;
 }
 
 .bean-logo {
@@ -190,7 +202,7 @@ p {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 30px 0 10px;
+  margin-bottom: 30px 0 10px;
 }
 
 .small-text {
@@ -198,24 +210,47 @@ p {
   margin: 0;
 }
 
+.evo-pictures-container {
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .evo-pictures {
   position: fixed;
   bottom: 0;
   width: 90%;
   max-width: 1350px;
-  z-index: 99;
-  display: -webkit-box;
+  /*z-index: 99;*/
+  margin: 0 auto;
+  /*display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;*/
+
+  /*background: lightblue;*/
+
+  display: inline-block;
+  text-align: justify;
+}
+
+.evo-pictures:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.evo-pictures p {
+  display: inline-block;
 }
 
 .evo-pic-1, .evo-pic-2 {
   opacity: 0;
   height: 50vh;
   padding: 10px;
+  display: inline-block;
 }
 
 .bean-components {
@@ -229,7 +264,7 @@ p {
 }
 
 .bean-specs {
-  z-index: 99;
+  /*z-index: 99;*/
   position: fixed;
 }
 
@@ -267,31 +302,7 @@ p {
   max-height: 480px;
 }
 
-#first-section {
-  height: 95vh;
-  position: relative;
-}
 
-#bean-section {
-  font-size: 50px;
-  background: #181818;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100vw;
-  position: relative;
-  overflow: hidden;
-}
 
 #specs-section {
   position: absolute;
@@ -304,16 +315,16 @@ p {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-top: 100px;
-  z-index: 99;
+  /*z-index: 99;*/
 }
 
 .email-section-content {
@@ -334,7 +345,7 @@ p {
   border: none;
   padding: 5px;
   margin: 20px;
-  z-index: 99;
+  /*z-index: 99;*/
   color: black;
   font-size: 20px;
   font-weight: lighter;
@@ -349,15 +360,15 @@ p {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 #credits-section img {
@@ -381,6 +392,7 @@ p {
   display:inline-block;
   width: 22px;
   height:22px;
+  /*-webkit-transform: rotate(45deg);*/
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   position: absolute;
@@ -448,33 +460,33 @@ input:focus{
 /* animations */
 
 .fadein {
-  -webkit-animation: fadein .9s;
+  -webkit-animation:         fadein .9s;
   animation:         fadein .9s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .fadeout {
-  -webkit-animation: fadeout .35s;
+  -webkit-animation:         fadeout .35s;
   animation:         fadeout .35s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .fadein-with-delay {
-  -webkit-animation: fadein .7s;
+  -webkit-animation:         fadein .7s;
   animation:         fadein .7s;
   -webkit-animation-delay: .3s;
-          animation-delay: .3s;
+  animation-delay: .3s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .fadeout-fast {
-  -webkit-animation: fadeout .1s;
+  -webkit-animation:         fadeout .1s;
   animation:         fadeout .1s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes intro {
