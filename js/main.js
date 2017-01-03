@@ -7,6 +7,8 @@ var firstSection = document.querySelector('#first-section');
 var specsSection = document.querySelector('#specs-section');
 var thingswesaidBullet = document.querySelector('#thingswesaid');
 var beanBullet = document.querySelector('#bean');
+var emailBullet = document.querySelector('#email');
+var creditBullet = document.querySelector('#credit');
 var emailSection = document.querySelector('#email-section');
 var creditsSection = document.querySelector('#credits-section');
 var beanPicsBullet = document.querySelector('#bean-pics');
@@ -126,6 +128,7 @@ var showBeanPics = function(show) {
     evoPicTwo.style.animationDelay = '.8s'
     evoPicTwo.classList.add('fadein');
     memoBeanPics = true;
+    switchNavigator(beanPicsBullet, true);
   } else {
     evoPicOne.classList.remove('fadein');
     evoPicOne.classList.add('fadeout');
@@ -136,6 +139,7 @@ var showBeanPics = function(show) {
     evoPicTwo.style.animationDelay = ''
     evoPicTwo.classList.add('fadeout');
     memoBeanPics = false;
+    switchNavigator(beanPicsBullet, false);
   }
 }
 
@@ -176,6 +180,7 @@ var stickBeanTitleCheck = function(timeToStick) {
     memoBeanTitleSticking = false;
     showBeanPics(false);
     switchNavigator(beanPicsBullet, false);
+    switchNavigator(beanEmailBullet, false);
   }
 };
 
@@ -185,9 +190,13 @@ var showEmailSection = function(show) {
     emailSectionContent.classList.add('fadein');
     showBeanSpecs(false);
     showBeanPics(false);
+    switchNavigator(creditBullet, false);
+    switchNavigator(beanSpecsBullet, false);
+    switchNavigator(emailBullet, true);
   } else {
     emailSectionContent.classList.remove('fadein');
     emailSectionContent.classList.add('fadeout');
+    switchNavigator(emailBullet, false);
   }
 }
 
@@ -229,6 +238,8 @@ window.addEventListener("scroll", function() {
     }
   } else if (emailSectionInView && creditsSectionInView) {
     showEmailSection(false);
+    switchNavigator(emailBullet, false);
+    switchNavigator(creditBullet, true);
     beanTitle.classList.remove('fadein');
     beanTitle.classList.add('fadeout');
   }
