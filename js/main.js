@@ -5,11 +5,12 @@ docHeightHalf = docHeight / 2;
 
 var firstSection = document.querySelector('#first-section');
 var specsSection = document.querySelector('#specs-section');
+var thingswesaidBullet = document.querySelector('#thingswesaid');
+var beanBullet = document.querySelector('#bean');
 var emailSection = document.querySelector('#email-section');
 var creditsSection = document.querySelector('#credits-section');
-var beanSection = document.querySelector('#bean');
-var beanPicsSection = document.querySelector('#bean-pics');
-var beanSpecsSection = document.querySelector('#bean-specs');
+var beanPicsBullet = document.querySelector('#bean-pics');
+var beanSpecsBullet = document.querySelector('#bean-specs');
 var creditsSection = document.querySelector('#credits-section');
 var mainTitle = document.querySelector('.main-title');
 var beanTitle = document.querySelector('.bean-title');
@@ -23,8 +24,8 @@ var beanSpecs = document.querySelector('.bean-specs');
 var sylo = document.querySelector('.sylo');
 var specs = document.querySelector('.specs');
 var emailSectionContent = document.querySelector('.email-section-content');
+var beanSection = document.querySelector('#bean-section');
 
-var thingswesaid = document.querySelector('#thingswesaid');
 
 // memos
 var memoArrow;
@@ -76,6 +77,13 @@ window.onbeforeunload = function() {
   window.scrollTo(0,0);
 };
 
+beanSection.style.height = `${docHeight * 3.5}px`;
+specsSection.style.bottom = `${docHeight * 1.5}px`;
+emailSection.style.bottom = `${docHeight / 1.3}px`;
+creditsSection.style.bottom = `${docHeight / 2.1}px`;
+thingswesaidBullet.classList.add('active');
+beanTitle.style.marginTop = `${docHeight * 0.5}px`;
+
 var toggleArrow = function(present) {
   var removeClass = present ? 'fadein-with-delay' : 'fadeout-fast';
   var addClass = present ? 'fadeout-fast' : 'fadein-with-delay';
@@ -96,7 +104,6 @@ var toggleSection = function(el, present, classIn, classOut) {
   el.classList.add(addClass);
 };
 
-thingswesaid.classList.add('active');
 toggleArrow(memoArrow);
 
 slideEvoSide = function() {
@@ -107,7 +114,6 @@ slideEvoSide = function() {
   }
 };
 
-beanTitle.style.marginTop = `${docHeight * 0.5}px`;
 
 var showBeanPics = function(show) {
   if (show) {
@@ -142,16 +148,16 @@ var showBeanSpecs = function(show) {
     specs.classList.add('fadein');
     showBeanPics(false);
     if (memoEmailSectionInView) showEmailSection(false);
-    switchNavigator(beanPicsSection, false);
-    switchNavigator(beanSpecsSection, true);
+    switchNavigator(beanPicsBullet, false);
+    switchNavigator(beanSpecsBullet, true);
   } else if (!show && memoBeanTitleSticking) {
     sylo.classList.remove('fadein');
     sylo.classList.add('fadeout');
     specs.classList.remove('fadein');
     specs.style.animationDelay = ''
     specs.classList.add('fadeout');
-    switchNavigator(beanPicsSection, true);
-    switchNavigator(beanSpecsSection, false);
+    switchNavigator(beanPicsBullet, true);
+    switchNavigator(beanSpecsBullet, false);
   }
 }
 
@@ -162,14 +168,14 @@ var stickBeanTitleCheck = function(timeToStick) {
     beanTitlePositionStick = timeToStick[1]
     memoBeanTitleSticking = true;
     showBeanPics(true);
-    switchNavigator(beanPicsSection, true);
+    switchNavigator(beanPicsBullet, true);
   } else if(beanTitlePositionStick && beanTitlePositionStick >= document.body.scrollTop) {
     beanTitle.classList.remove('sticky-bean');
     beanTitle.style.marginTop = `${docHeight * 0.5}px`;
     beanTitlePositionStick = undefined;
     memoBeanTitleSticking = false;
     showBeanPics(false);
-    switchNavigator(beanPicsSection, false);
+    switchNavigator(beanPicsBullet, false);
   }
 };
 
@@ -193,14 +199,14 @@ window.addEventListener("scroll", function() {
   if (firstSectionInView !== memoFirstSectionInView) {
     toggleSection(firstSectionDeer, firstSectionInView, 'fadein', 'fadeout');
     memoFirstSectionInView = firstSectionInView;
-    switchNavigator(thingswesaid, memoFirstSectionInView)
+    switchNavigator(thingswesaidBullet, memoFirstSectionInView)
   }
 
   var beanTitleInView = checkElementInViewport(beanTitle)
   if (beanTitleInView !== memoSecondSectionInView) {
     toggleSection(evoSide, beanTitleInView, 'fadein-with-delay', 'fadeout');
     memoSecondSectionInView = beanTitleInView;
-    switchNavigator(beanSection, memoSecondSectionInView);
+    switchNavigator(beanBullet, memoSecondSectionInView);
   }
 
   if (beanTitleInView) slideEvoSide();

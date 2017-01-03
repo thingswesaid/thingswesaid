@@ -264,19 +264,16 @@ p {
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  height: 300vh;
   position: relative;
   overflow: hidden;
 }
 
 #specs-section {
   position: absolute;
-  bottom: 900px;
 }
 
 #email-section {
   position: absolute;
-  bottom: 400px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -313,13 +310,12 @@ p {
 
 #credits-section {
   position: absolute;
-  bottom: 250px;
+  bottom: 350px;
   font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 50vh;
 }
 
 #credits-section img {
@@ -329,7 +325,6 @@ p {
 #credits-section p {
   margin: 5px;
 }
-
 
 .link {
   text-decoration: underline;
