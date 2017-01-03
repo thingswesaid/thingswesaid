@@ -308,7 +308,19 @@ p {
 #credits-section {
   position: absolute;
   bottom: 350px;
-  font-size: 20px;
+  font-size: 22px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+#credits-section img {
+  width: 70px;
+}
+
+#credits-section p {
+  margin: 5px;
 }
 
 
