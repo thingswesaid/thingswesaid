@@ -138,7 +138,7 @@ p {
 
 #bean-section {
   width: 100%;
-  height: 350vh;
+  height: 330vh;
   position: relative;
   overflow: hidden;
   font-size: 50px;
@@ -175,58 +175,34 @@ p {
   margin: 30px 0 10px;
 }
 
-.lombok {
-  font-family: 'Lombok';
-}
-
 .sticky-bean {
   position: fixed;
   top: 0px;
   width: 100%;
-  /*z-index: 99;*/
 }
 
 .evo-pictures-container {
   width: 100%;
   display: table-cell;
   vertical-align: middle;
+  position: fixed;
+  bottom: 0;
 }
 
 .evo-pictures {
-  position: fixed;
-  bottom: 0;
   width: 90%;
   max-width: 1350px;
-  /*z-index: 99;*/
   margin: 0 auto;
-  /*display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;*/
-
-  /*background: lightblue;*/
-
-  display: inline-block;
+  padding: 0;
   text-align: justify;
-}
-
-.evo-pictures:after {
-  content: '';
-  display: inline-block;
-  width: 100%;
-}
-
-.evo-pictures p {
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
 }
 
 .evo-pic-1, .evo-pic-2 {
   opacity: 0;
   height: 50vh;
   padding: 10px;
-  display: inline-block;
 }
 
 .bean-components {
@@ -239,17 +215,29 @@ p {
   margin: auto 0;
 }
 
+#specs-section {
+  position: absolute;
+}
+
 .bean-specs {
-  /*z-index: 99;*/
   position: fixed;
+}
+
+.sylo {
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  opacity: 0;
+  height: 60vh;
+  max-height: 480px;
 }
 
 .specs {
   position: fixed;
   right: 0;
-  bottom: 100px;
+  bottom: 9%;
   font-size: 18px;
-  width: 500px;
+  width: 35%;
   opacity: 0;
 }
 
@@ -269,44 +257,18 @@ p {
   margin: 6px 0 0 30px;
 }
 
-.sylo {
-  position: fixed;
-  bottom: 0;
-  left: 20px;
-  opacity: 0;
-  height: 60vh;
-  max-height: 480px;
-}
-
-
-
-#specs-section {
-  position: absolute;
-}
 
 #email-section {
   position: absolute;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 100px;
-  /*z-index: 99;*/
 }
 
 .email-section-content {
   position: fixed;
   bottom: 40vh;
+  left: 0;
   opacity: 0;
+  margin: 0 auto;
+  width: 100%;
 }
 
 #email-section p {
@@ -321,7 +283,6 @@ p {
   border: none;
   padding: 5px;
   margin: 20px;
-  /*z-index: 99;*/
   color: black;
   font-size: 20px;
   font-weight: lighter;
@@ -332,19 +293,11 @@ p {
   position: absolute;
   bottom: 350px;
   font-size: 22px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #credits-section img {
@@ -436,6 +389,10 @@ input:focus{
 .small-text {
   font-size: 15px !important;
   margin: 0;
+}
+
+.lombok {
+  font-family: 'Lombok';
 }
 
 /* animations */

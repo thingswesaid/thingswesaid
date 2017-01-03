@@ -1,5 +1,4 @@
 // HTML elements && window
-var docWidth = window.innerWidth;
 var docHeight = window.innerHeight;
 var docHeightHalf = docHeight / 2;
 
@@ -25,8 +24,6 @@ var beanSpecs = document.querySelector('.bean-specs');
 var sylo = document.querySelector('.sylo');
 var specs = document.querySelector('.specs');
 var emailSectionContent = document.querySelector('.email-section-content');
-var beanSection = document.querySelector('#bean-section');
-
 
 // memos
 var memoArrow;
