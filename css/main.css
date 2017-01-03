@@ -17,8 +17,7 @@ html, body {
   padding: 0;
   max-width: 100%;
   overflow-x: hidden;
-  background: #505050;
-
+  background: #181818;
   position: relative;
 }
 
@@ -71,9 +70,9 @@ p {
 }
 
 .tws-section-deer:after {
-	content: '';
-	display: inline-block;
-	width: 100%;
+  content: '';
+  display: inline-block;
+  width: 100%;
 }
 
 .tws-section-deer img {
@@ -115,6 +114,46 @@ p {
   animation:         intro .9s;
 }
 
+#bean-section {
+  width: 100%;
+  height: 350vh;
+  position: relative;
+  overflow: hidden;
+  font-size: 50px;
+  text-align: center;
+  background: #181818;
+}
+
+.evo-side {
+  background-image: url(../images/evo-side.png);
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+}
+
+.bean-title {
+  width: 100%;
+  display: inline-block;
+  height: 50vh;
+  margin-top: 50vh;
+}
+
+.bean-logo {
+  background-image: url(../images/bean.png);
+  width: 100%;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 30px 0 10px;
+}
+
 .lombok {
   font-family: 'Lombok';
   margin: 0;
@@ -151,26 +190,6 @@ p {
   font-size: 50px;
 }
 
-.evo-side {
-  background-image: url(../images/evo-side.png);
-  background-position: right;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: fixed;
-  /*z-index: 99;*/
-  top: 0;
-  margin-right: -50px;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-
-@media only screen and (max-width: 770px) {
-  .evo-side {
-    margin-right: -110px;
-  }
-}
-
 .sticky-bean {
   position: fixed;
   top: 0px;
@@ -178,32 +197,6 @@ p {
   /*z-index: 99;*/
 }
 
-#bean-section {
-  display: table;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  font-size: 50px;
-  text-align: center;
-}
-
-.bean-title {
-  width: 100%;
-  /*display: table-cell;*/
-  display: inline-block;
-  /*vertical-align: middle;*/
-  height: 50vh;
-}
-
-.bean-logo {
-  background-image: url(../images/bean.png);
-  width: 100%;
-  height: 50px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-bottom: 30px 0 10px;
-}
 
 .small-text {
   font-size: 15px !important;

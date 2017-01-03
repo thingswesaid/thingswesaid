@@ -3,7 +3,7 @@ docWidth = window.innerWidth;
 docHeight = window.innerHeight;
 docHeightHalf = docHeight / 2;
 
-// var firstSection = document.querySelector('#tws-section');
+var twsTitleSection = document.querySelector('#tws-title-section');
 var specsSection = document.querySelector('#specs-section');
 var thingswesaidBullet = document.querySelector('#thingswesaid');
 var beanBullet = document.querySelector('#bean');
@@ -14,7 +14,6 @@ var creditsSection = document.querySelector('#credits-section');
 var beanPicsBullet = document.querySelector('#bean-pics');
 var beanSpecsBullet = document.querySelector('#bean-specs');
 var creditsSection = document.querySelector('#credits-section');
-var mainTitle = document.querySelector('.thingswesaid-title');
 var beanTitle = document.querySelector('.bean-title');
 var evoSide = document.querySelector('.evo-side');
 var twsSectionDeer = document.querySelector('.tws-section-deer');
@@ -31,9 +30,9 @@ var beanSection = document.querySelector('#bean-section');
 
 // memos
 var memoArrow;
-var memoFirstSectionInView;
+var memoTwsTitleSectionInView;
 var beanTitlePositionStick;
-var memoSecondSectionInView = false;
+var memoBeanTitleInView = false;
 var startingPoint;
 var memoBeanTitleSticking = false;
 var memoBeanPics = false;
@@ -79,12 +78,11 @@ window.onbeforeunload = function() {
   window.scrollTo(0,0);
 };
 
-beanSection.style.height = `${docHeight * 3.5}px`;
 specsSection.style.bottom = `${docHeight * 1.5}px`;
 emailSection.style.bottom = `${docHeight / 1.3}px`;
 creditsSection.style.bottom = `${docHeight / 2.1}px`;
+
 thingswesaidBullet.classList.add('active');
-beanTitle.style.marginTop = `${docHeight * 0.5}px`;
 
 var toggleArrow = function(present) {
   var removeClass = present ? 'fadein-with-delay' : 'fadeout-fast';
@@ -111,8 +109,8 @@ toggleArrow(memoArrow);
 slideEvoSide = function() {
   if (isBeanTitleOnTop(beanTitle, docHeight / 4)[0]) {
     startingPoint = startingPoint === undefined ? window.pageYOffset : startingPoint;
-    var move = 50 - (window.pageYOffset - startingPoint);
-    if (move <= 50) evoSide.style.right = `${move - 10}px`;
+    var move = (window.pageYOffset - startingPoint);
+    if (move <= 300) evoSide.style.right = `-${move}px`;
   }
 };
 
@@ -204,18 +202,18 @@ var showEmailSection = function(show) {
 window.addEventListener("scroll", function() {
   if (memoArrow) toggleArrow(arrowDown)
 
-  var firstSectionInView = checkElementInViewport(mainTitle, docHeightHalf);
-  if (firstSectionInView !== memoFirstSectionInView) {
-    toggleSection(twsSectionDeer, firstSectionInView, 'fadein', 'fadeout');
-    memoFirstSectionInView = firstSectionInView;
-    switchNavigator(thingswesaidBullet, memoFirstSectionInView)
+  var twsTitleSectionInView = checkElementInViewport(twsTitleSection, docHeightHalf);
+  if (twsTitleSectionInView !== memoTwsTitleSectionInView) {
+    toggleSection(twsSectionDeer, twsTitleSectionInView, 'fadein', 'fadeout');
+    meTwsTitleSectionInView = twsTitleSectionInView;
+    switchNavigator(thingswesaidBullet, memoTwsTitleSectionInView)
   }
 
-  var beanTitleInView = checkElementInViewport(beanTitle)
-  if (beanTitleInView !== memoSecondSectionInView) {
-    toggleSection(evoSide, beanTitleInView, 'fadein-with-delay', 'fadeout');
-    memoSecondSectionInView = beanTitleInView;
-    switchNavigator(beanBullet, memoSecondSectionInView);
+  var beanTitleInView = checkElementInViewport(beanTitle, 0, -docHeightHalf);
+  if (beanTitleInView !== memoBeanTitleInView) {
+    toggleSection(evoSide, beanTitleInView, 'fadein', 'fadeout');
+    memoBeanTitleInView = beanTitleInView;
+    switchNavigator(beanBullet, memoBeanTitleInView);
   }
 
   if (beanTitleInView) slideEvoSide();
