@@ -80,6 +80,28 @@ p {
   width: auto;
 }
 
+.deer-profile {
+  height: 50vh;
+}
+
+.deer-right {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  -webkit-filter: FlipH;
+  filter: FlipH;
+}
+
+@media only screen and (max-width: 770px) {
+  .deer-profile {
+    width: 150px;
+  }
+
+  .deer-right {
+    top: auto;
+    bottom: 20%;
+  }
+}
+
 .arrow-down {
   position: fixed;
   height: 40px;
@@ -125,10 +147,8 @@ p {
 }
 
 .evo-side {
-  background-image: url(../images/evo-side.png);
-  background-position: right;
+  background: url(../images/evo-side.png) no-repeat right;
   background-size: contain;
-  background-repeat: no-repeat;
   position: fixed;
   top: 0;
   right: 0;
@@ -139,55 +159,24 @@ p {
 
 .bean-title {
   width: 100%;
-  display: inline-block;
   height: 50vh;
   margin-top: 50vh;
 }
 
+.bean-title * {
+  margin: 0;
+}
+
 .bean-logo {
-  background-image: url(../images/bean.png);
+  background: url(../images/bean.png) no-repeat center;
+  background-size: contain;
   width: 100%;
   height: 50px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-bottom: 30px 0 10px;
+  margin: 30px 0 10px;
 }
 
 .lombok {
   font-family: 'Lombok';
-  margin: 0;
-}
-
-.bean {
-  margin-bottom: 6px;
-}
-
-.deer-profile {
-  height: 50vh;
-}
-
-.deer-right {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  -webkit-filter: FlipH;
-  filter: FlipH;
-}
-
-@media only screen and (max-width: 770px) {
-  .deer-profile {
-    width: 150px;
-  }
-
-  .deer-right {
-    top: auto;
-    bottom: 20%;
-  }
-}
-
-.main-title p {
-  margin: 0;
-  font-size: 50px;
 }
 
 .sticky-bean {
@@ -195,12 +184,6 @@ p {
   top: 0px;
   width: 100%;
   /*z-index: 99;*/
-}
-
-
-.small-text {
-  font-size: 15px !important;
-  margin: 0;
 }
 
 .evo-pictures-container {
@@ -448,6 +431,11 @@ input:focus{
   font-size: 20px;
   font-weight: lighter;
   text-align: center;
+}
+
+.small-text {
+  font-size: 15px !important;
+  margin: 0;
 }
 
 /* animations */

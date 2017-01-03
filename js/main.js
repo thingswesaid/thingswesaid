@@ -1,7 +1,7 @@
 // HTML elements && window
-docWidth = window.innerWidth;
-docHeight = window.innerHeight;
-docHeightHalf = docHeight / 2;
+var docWidth = window.innerWidth;
+var docHeight = window.innerHeight;
+var docHeightHalf = docHeight / 2;
 
 var twsTitleSection = document.querySelector('#tws-title-section');
 var specsSection = document.querySelector('#specs-section');
@@ -38,6 +38,7 @@ var memoBeanTitleSticking = false;
 var memoBeanPics = false;
 var memoEmailSectionInView;
 var memoCreditsSectionInView;
+var memoBeanTitleOnTop = false;
 
 // helper functions
 function checkElementInViewport(el, marginTop = 0, marginBottom = 0) {
@@ -60,16 +61,15 @@ function checkElementInViewport(el, marginTop = 0, marginBottom = 0) {
   );
 };
 
-function isBeanTitleOnTop(el, margin = 0) {
+function isBeanTitleOnTop(el, scrollTop, margin = 0) {
   var top = el.offsetTop;
-  var y = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
   while(el.offsetParent) {
     el = el.offsetParent;
     top += el.offsetTop;
   }
 
-  var greater = y + margin >= top;
-  if (greater) return [true, y];
+  var greater = scrollTop + margin >= top;
+  if (greater) return [true, scrollTop];
   return false;
 };
 
@@ -106,8 +106,8 @@ var toggleSection = function(el, present, classIn, classOut) {
 
 toggleArrow(memoArrow);
 
-slideEvoSide = function() {
-  if (isBeanTitleOnTop(beanTitle, docHeight / 4)[0]) {
+slideEvoSide = function(scrollTop) {
+  if (isBeanTitleOnTop(beanTitle, scrollTop, docHeight / 4)[0]) {
     startingPoint = startingPoint === undefined ? window.pageYOffset : startingPoint;
     var move = (window.pageYOffset - startingPoint);
     if (move <= 300) evoSide.style.right = `-${move}px`;
@@ -163,17 +163,17 @@ var showBeanSpecs = function(show) {
   }
 }
 
-var stickBeanTitleCheck = function(timeToStick) {
+var stickBeanTitleCheck = function(timeToStick, scrollTop) {
   if (!memoBeanTitleSticking && timeToStick[0]) {
-    beanTitle.style.marginTop = '0';
+    beanTitle.style.marginTop = '0px';
     beanTitle.classList.add('sticky-bean');
     beanTitlePositionStick = timeToStick[1]
     memoBeanTitleSticking = true;
     showBeanPics(true);
     switchNavigator(beanPicsBullet, true);
-  } else if(beanTitlePositionStick && beanTitlePositionStick >= document.body.scrollTop) {
+  } else if(beanTitlePositionStick >= scrollTop) {
     beanTitle.classList.remove('sticky-bean');
-    beanTitle.style.marginTop = `${docHeight * 0.5}px`;
+    beanTitle.style.marginTop = `50vh`;
     beanTitlePositionStick = undefined;
     memoBeanTitleSticking = false;
     showBeanPics(false);
@@ -200,8 +200,8 @@ var showEmailSection = function(show) {
 
 // scroll events
 window.addEventListener("scroll", function() {
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   if (memoArrow) toggleArrow(arrowDown)
-
   var twsTitleSectionInView = checkElementInViewport(twsTitleSection, docHeightHalf);
   if (twsTitleSectionInView !== memoTwsTitleSectionInView) {
     toggleSection(twsSectionDeer, twsTitleSectionInView, 'fadein', 'fadeout');
@@ -216,9 +216,12 @@ window.addEventListener("scroll", function() {
     switchNavigator(beanBullet, memoBeanTitleInView);
   }
 
-  if (beanTitleInView) slideEvoSide();
-  var beanTitleInView = isBeanTitleOnTop(beanTitle);
-  stickBeanTitleCheck(beanTitleInView);
+  if (beanTitleInView) slideEvoSide(scrollTop);
+  var beanTitleOnTop = isBeanTitleOnTop(beanTitle, scrollTop, 35);
+  var unstick = beanTitlePositionStick >= scrollTop;
+  var toggleStickClass = beanTitleOnTop[0] !== memoBeanTitleOnTop;
+  if (toggleStickClass || unstick) stickBeanTitleCheck(beanTitleOnTop, scrollTop);
+  memoBeanTitleOnTop = beanTitleOnTop[0];
 
   var specsSectionInView = checkElementInViewport(specsSection);
   var emailSectionInView = checkElementInViewport(emailSection, 0, -200);
