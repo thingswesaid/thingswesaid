@@ -180,7 +180,7 @@ var stickBeanTitleCheck = function(timeToStick) {
     memoBeanTitleSticking = false;
     showBeanPics(false);
     switchNavigator(beanPicsBullet, false);
-    switchNavigator(beanEmailBullet, false);
+    // switchNavigator(beanEmailBullet, false);
   }
 };
 
