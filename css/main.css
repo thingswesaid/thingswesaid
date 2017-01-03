@@ -29,7 +29,7 @@ p {
 
 #navigator {
   position: fixed;
-  top: 38vh;
+  top: 40vh;
   right: 15px;
   height: 100px;
   width: 30px;
@@ -82,21 +82,18 @@ p {
 .first-section-deer {
   opacity: 0;
   position: fixed;
+  top: 15vh;
   z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .deer-profile {
-  width: 300px;
-  position: fixed;
-  top: 12%;
-}
-
-.deer-left {
-  left: 0;
+  height: 50vh;
 }
 
 .deer-right {
-  right: 0;
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
@@ -185,25 +182,16 @@ p {
 .evo-pictures {
   position: fixed;
   bottom: 0;
-  left: 20px;
   width: 100%;
   z-index: 99;
   display: flex;
   justify-content: space-between;
 }
 
-.evo-pic-1 {
+.evo-pic-1, .evo-pic-2 {
   opacity: 0;
-  width: 400px;
-  height: 100%;
+  height: 50vh;
   padding: 10px;
-}
-
-.evo-pic-2 {
-  opacity: 0;
-  width: 400px;
-  height: 100%;
-  padding-right: 65px;
 }
 
 .bean-components {
@@ -213,6 +201,7 @@ p {
   line-height: 25px;
   text-align: justify;
   opacity: 0;
+  margin: auto 0;
 }
 
 .bean-specs {
@@ -250,11 +239,14 @@ p {
   position: fixed;
   bottom: 0;
   left: 20px;
-  width: 60%;
   opacity: 0;
+  height: 60vh;
 }
 
-#first-section { height: 95vh; }
+#first-section {
+  height: 95vh;
+  position: relative;
+}
 
 #bean-section {
   font-size: 50px;
