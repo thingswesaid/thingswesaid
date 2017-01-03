@@ -264,19 +264,19 @@ p {
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
-  height: 400vh;
+  height: 300vh;
   position: relative;
   overflow: hidden;
 }
 
 #specs-section {
   position: absolute;
-  bottom: 1600px;
+  bottom: 900px;
 }
 
 #email-section {
   position: absolute;
-  bottom: 1000px;
+  bottom: 400px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -284,6 +284,12 @@ p {
   align-items: center;
   padding-top: 100px;
   z-index: 99;
+}
+
+.email-section-content {
+  position: fixed;
+  bottom: 40vh;
+  opacity: 0;
 }
 
 #email-section p {
@@ -307,12 +313,13 @@ p {
 
 #credits-section {
   position: absolute;
-  bottom: 350px;
+  bottom: 250px;
   font-size: 22px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 50vh;
 }
 
 #credits-section img {
