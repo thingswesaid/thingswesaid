@@ -24,10 +24,11 @@ var beanSpecs = document.querySelector('.bean-specs');
 var sylo = document.querySelector('.sylo');
 var specs = document.querySelector('.specs');
 var emailSectionContent = document.querySelector('.email-section-content');
+var beanSection = document.querySelector('#bean-section');
 
 // memos
 var memoArrow;
-var memoTwsTitleSectionInView;
+var memoTwsTitleSectionInView = true;
 var beanTitlePositionStick;
 var memoBeanTitleInView = false;
 var startingPoint;
@@ -89,9 +90,11 @@ var toggleArrow = function(present) {
   memoArrow = !present;
 };
 
-var switchNavigator = function(el, active) {
+var switchNavigator = function(el, active, el2 = null, el3 = null) {
   var switchToClass = active ? 'active' : '';
   el.classList = switchToClass;
+  if (el2) el2.classList = '';
+  if (el3) el3.classList = '';
 }
 
 var toggleSection = function(el, present, classIn, classOut) {
@@ -147,16 +150,14 @@ var showBeanSpecs = function(show) {
     specs.classList.add('fadein');
     showBeanPics(false);
     if (memoEmailSectionInView) showEmailSection(false);
-    switchNavigator(beanPicsBullet, false);
-    switchNavigator(beanSpecsBullet, true);
+    switchNavigator(beanSpecsBullet, true, beanPicsBullet);
   } else if (!show && memoBeanTitleSticking) {
     sylo.classList.remove('fadein');
     sylo.classList.add('fadeout');
     specs.classList.remove('fadein');
     specs.style.animationDelay = ''
     specs.classList.add('fadeout');
-    switchNavigator(beanPicsBullet, true);
-    switchNavigator(beanSpecsBullet, false);
+    switchNavigator(beanPicsBullet, true, beanSpecsBullet);
   }
 }
 
@@ -175,7 +176,6 @@ var stickBeanTitleCheck = function(timeToStick, scrollTop) {
     memoBeanTitleSticking = false;
     showBeanPics(false);
     switchNavigator(beanPicsBullet, false);
-    // switchNavigator(beanEmailBullet, false);
   }
 };
 
@@ -185,9 +185,7 @@ var showEmailSection = function(show) {
     emailSectionContent.classList.add('fadein');
     showBeanSpecs(false);
     showBeanPics(false);
-    switchNavigator(creditBullet, false);
-    switchNavigator(beanSpecsBullet, false);
-    switchNavigator(emailBullet, true);
+    switchNavigator(emailBullet, true, creditBullet, beanSpecsBullet);
   } else {
     emailSectionContent.classList.remove('fadein');
     emailSectionContent.classList.add('fadeout');
@@ -202,7 +200,7 @@ window.addEventListener("scroll", function() {
   var twsTitleSectionInView = checkElementInViewport(twsTitleSection, docHeightHalf);
   if (twsTitleSectionInView !== memoTwsTitleSectionInView) {
     toggleSection(twsSectionDeer, twsTitleSectionInView, 'fadein', 'fadeout');
-    meTwsTitleSectionInView = twsTitleSectionInView;
+    memoTwsTitleSectionInView = twsTitleSectionInView;
     switchNavigator(thingswesaidBullet, memoTwsTitleSectionInView)
   }
 
@@ -236,8 +234,7 @@ window.addEventListener("scroll", function() {
     }
   } else if (emailSectionInView && creditsSectionInView) {
     showEmailSection(false);
-    switchNavigator(emailBullet, false);
-    switchNavigator(creditBullet, true);
+    switchNavigator(creditBullet, true, emailBullet);
     beanTitle.classList.remove('fadein');
     beanTitle.classList.add('fadeout');
   }
