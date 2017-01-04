@@ -260,6 +260,7 @@ p {
 
 #email-section {
   position: absolute;
+  z-index: 99;
 }
 
 .email-section-content {
@@ -306,6 +307,10 @@ p {
 
 #credits-section p {
   margin: 5px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .link {
