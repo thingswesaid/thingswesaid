@@ -30,6 +30,33 @@ p {
   position: relative;
 }
 
+#password {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #181818;
+  z-index: 999;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#password img {
+  width: 100px;
+  margin: -100px 10px 10px;
+}
+
+#password input {
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  color: black;
+  text-align: center;
+}
+
 #navigator {
   position: fixed;
   top: 35vh;

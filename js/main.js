@@ -2,6 +2,9 @@
 var docHeight = window.innerHeight;
 var docHeightHalf = docHeight / 2;
 
+var pswSection = document.querySelector('#password');
+var pswSectionInput = document.querySelector('#password input');
+
 var twsTitleSection = document.querySelector('#tws-title-section');
 var specsSection = document.querySelector('#specs-section');
 var thingswesaidBullet = document.querySelector('#thingswesaid');
@@ -28,6 +31,7 @@ var beanSection = document.querySelector('#bean-section');
 
 // memos
 var memoArrow;
+var memoPswSection = true;
 var memoTwsTitleSectionInView = true;
 var beanTitlePositionStick;
 var memoBeanTitleInView = false;
@@ -71,10 +75,28 @@ function isBeanTitleOnTop(el, scrollTop, margin = 0) {
   return false;
 };
 
+var tempPsws = ['brunopereira'];
+
 // lifecycle functions
 window.onbeforeunload = function() {
   window.scrollTo(0,0);
 };
+
+if (memoPswSection) {
+  document.querySelector('html').style.overflow = 'hidden';
+  document.querySelector('.main').style.display = 'none'
+}
+
+pswSectionInput.addEventListener('keypress', function(e) {
+  var key = e.which || e.keyCode;
+   if (key === 13) {
+     if (tempPsws.includes(e.target.value)) {
+       document.querySelector('html').style.overflow = '';
+       pswSection.style.display = 'none';
+       document.querySelector('.main').style.display = ''
+     }
+   }
+})
 
 specsSection.style.bottom = `${docHeight * 1.5}px`;
 emailSection.style.bottom = `${docHeight / 1.3}px`;
