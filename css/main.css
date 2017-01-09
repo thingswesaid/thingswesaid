@@ -44,12 +44,13 @@ p {
 }
 
 #password img {
-  width: 100px;
+  width: 70px;
   margin: -100px 10px 10px;
+  opacity: .8;
 }
 
 #password input {
-  width: 300px;
+  width: 250px;
   height: 50px;
   border-radius: 10px;
   border: none;

@@ -75,7 +75,7 @@ function isBeanTitleOnTop(el, scrollTop, margin = 0) {
   return false;
 };
 
-var tempPsws = ['brunopereira'];
+var tempPsws = ['dmnl', 'brunopereira', 'gianniteruzzi'];
 
 // lifecycle functions
 window.onbeforeunload = function() {
@@ -91,6 +91,7 @@ pswSectionInput.addEventListener('keypress', function(e) {
   var key = e.which || e.keyCode;
    if (key === 13) {
      if (tempPsws.includes(e.target.value)) {
+       pswSection.classList.add('fadeout');
        document.querySelector('html').style.overflow = '';
        pswSection.style.display = 'none';
        document.querySelector('.main').style.display = ''
