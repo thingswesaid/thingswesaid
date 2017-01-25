@@ -41,7 +41,6 @@ var memoBeanPics = false;
 var memoEmailSectionInView;
 var memoCreditsSectionInView;
 var memoBeanTitleOnTop = false;
-
 // helper functions
 function checkElementInViewport(el, marginTop = 0, marginBottom = 0) {
   var top = el.offsetTop;
@@ -75,7 +74,7 @@ function isBeanTitleOnTop(el, scrollTop, margin = 0) {
   return false;
 };
 
-var tempPsws = ['mnldcrst', 'brunopereira', 'gianniteruzzi', 'raghubala'];
+var tempPsws = ['mnldcrst', 'gianniteruzzi', 'raghubala'];
 
 // lifecycle functions
 window.onbeforeunload = function() {
