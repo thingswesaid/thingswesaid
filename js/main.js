@@ -41,6 +41,7 @@ var memoBeanPics = false;
 var memoEmailSectionInView;
 var memoCreditsSectionInView;
 var memoBeanTitleOnTop = false;
+
 // helper functions
 function checkElementInViewport(el, marginTop = 0, marginBottom = 0) {
   var top = el.offsetTop;
