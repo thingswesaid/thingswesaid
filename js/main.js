@@ -102,7 +102,6 @@ pswSectionInput.addEventListener('keypress', function(e) {
 specsSection.style.bottom = `${docHeight * 1.5}px`;
 emailSection.style.bottom = `${docHeight / 1.3}px`;
 creditsSection.style.bottom = `${docHeight / 2.1}px`;
-
 thingswesaidBullet.classList.add('active');
 
 var toggleArrow = function(present) {
